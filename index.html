@@ -1,26 +1,266 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>2013</title>
+    <style>
+        /*폰트*/
+        @font-face {
+            font-family: 'TillVictoryComes';
+            src: url('https://cdn.jsdelivr.net/gh/tillvictorycomes/TillVictoryComes-font/tillvictorycomes-Regular.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Pretendard-Thin';
+            src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/pretendard@v1.3.8/public/static/Pretendard-Thin.woff2') format('woff2');
+            font-weight: 100;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'SchoolSafetyPictureDiary';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimGeurimilgiTTF-R.woff2') format('woff2');
+            font-weight: normal;
+            font-display: swap;
+        }
+
+        /*전체 배경*/
+        body {
+            margin: 0;
+            padding: 0;
+            background: #white; 
+            background-attachment: fixed;
+            color: #666;
+            font-family: 'Pretendard', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center; 
+            font-weight: 100;
+        }
+        .inner-panel {
+            width: 100%;
+            max-width: 700px; /*가로폭*/
+            background-color: #ffffff; /*내부*/
+            padding: 0;
+            box-sizing: border-box;
+
+            border-left: 1px solid #333;
+            border-right: 1px solid #333;
+
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+        }
+        /*커버*/
+        .cover-section {
+            width: 100%;      
+            text-align: center;
+            padding: 100px 0 60px 0; /*상하 여백*/
+            border-bottom: 1px solid #333; /*가로선*/
+            margin-bottom: 9px;
+            box-sizing: border-box; 
+            display: block;         
+        }
+
+        h1 {
+            font-family: 'TillVictoryComes', sans-serif;
+            font-size: 5rem;
+            margin: 0;
+            color: #000;
+        }
+
+        .author {
+            font-size: 1.1rem;
+            margin-top: 20px;
+            margin-bottom: 0; 
+            color: #2c2c2c;
+            display: block;         
+        }
+        .info-bar {
+            width: 100%;
+            display: flex; /*가로 배치*/
+            justify-content: space-between; /*양끝 배치*/
+            align-items: center; /*세로 중앙*/
+    
+            padding: 10px 40px; /*중앙 정렬*/
+            border-bottom: 1px solid #333;
+            box-sizing: border-box;
+    
+            font-size: 1.1rem;
+            color: #2c2c2c;
+            line-height: 1; /*행간 제거 */
+        }
+        .info-bar p, .info-bar span {
+            margin: 0;
+            padding: 0;
+            line-height: 1;
+        }
+        /*본문*/
+        .main-content {
+            width: 100%;
+            margin: 0 auto;
+            padding: 35px 40px 0 40px;      
+            box-sizing: border-box;
+        }
+
+        /*본문 스타일*/
+        .text-box {
+            text-align: justify; /*양끝 정렬*/
+            line-height: 2.0;   /*행간*/
+            word-break: keep-all; /*переносить по словам*/
+            font-weight: 100;
+            color: #2c2c2c;
+            margin-bottom: 35px;
+
+        }
+
+        .text-box p {
+            font-size: 1.2rem; 
+            margin-bottom: 30px; /*문단 사이 간격*/
+        }
+
+        /*이미지*/
+        .image-box {
+            width: 100%;
+            max-width: 500px; /*이미지 사이즈<글 사이즈*/
+            height: 350px;
+            background-color: #eee; /*이미지 임시 배경*/
+            margin: 40px auto; /*상하여백&중앙정렬*/
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-style: italic;
+        }
+        .end-section {
+            width: 100%;
+            max-width: 600px; /*본문 넓이랑 같게*/
+            margin: 80px auto 150px auto; /*위아래 여백*/
+            text-align: center;
+        }
+        .end-text {
+            font-family: 'TillVictoryComes', sans-serif;
+            font-size: 5rem;   
+            color: #000;
+             margin: 0;
+            letter-spacing: 0.5rem; /*자간 넓게*/
+            text-transform: uppercase;
+        }
+        .dots {
+            font-size: 4rem; /*... 후에 투닥거리는 남매 얼굴 아이콘 추가하기*/
+            color: #999;
+        margin-top: 5px;
+        }
+        .point {
+            font-family: 'SchoolSafetyPictureDiary';
+            color: #2c2c2c;
+        }
+
+    </style>
 </head>
 <body>
+    <div class="outline">
+        <div class="inner-panel">
+    <div class="cover-section">
+        <h1>집으로 가는 길</h1>
+        <p class="author">글/그림 최진주</p>
+    </div>
+    <div class="info-bar">
+        <span>2013년 05월 11일</span>
+        <span>날씨: 맑음</span>
+    </div>
+    <div class="main-content">
 
-</body>
+        <div class="text-box">
+            <p>어릴 적 내가 가장 싫어했던 건 <strong class="point">엘리베이터</strong> 였다.</p>
+
+            <p>러시아의 엘리베이터에는 독특한 시스템이 있다. 아이들의 안전 사고나 미아 방지를 위해 '최소 무게 제한'을 둔 것이다. 몸무게가 가벼운 아이가 버튼을 누르면 문이 닫히지 않았고, 당연히 위아래로 움직이지도 않았다.</p>
+
+            <p>그래서 밖을 나갈 때면 엄마는 항상 오빠를 내 곁에 붙여주셨다. 엘리베이터를 움직이려면 오빠가 꼭 필요했기 때문이다. 지금 생각해보면, 한창 놀고 싶었을 어린 오빠에게도 나를 챙겨야 하는 상황이 꽤 귀찮은 일이었을 것 같다.</p>
+        </div>
+
+        <div class="image-box">[엘리베이터 안 주인공과 오빠]</div>
+
+        <div class="text-box">
+            <p>어린 나는 밖에 나오면 신이 나서 제멋대로 걸어가다 앞을 못 보고 넘어지는 경우가 많았다. 그래서 그런지 오빠는 매번 내 가방 고리에 손가락이나 우산 끝을 걸고 나를 데리고 다녔다.</p>
+        </div>
+
+        <div class="image-box">[버스]</div>
+
+        <div class="text-box">
+            <p>그날도 평소처럼 학교가 끝나고 오빠와 함께 스쿨버스에 타려던 참이었다.</p>
+
+            <p>오빠는 나만 버스에 태우고 본인은 친구들과 놀러 가버렸다. 아무 생각없이 오빠만 따라다녔던 나는, 멀어지며 손을 흔드는 오빠에게 같이 손을 흔들어주었다.</p>
+
+            <p>버스 안에서 친구들과 신나게 수다를 떨며 집으로 향했다. 그때의 나는 알지 못했다. 그게 얼마나 큰 실수였는지...</p>
+        </div>
+
+        <div class="image-box">[엘리베이터 안 주인공]</div>
+
+        <div class="text-box">
+            <p>집에 도착해서야 이상하다는 걸 느꼈다. 현관문은 지나가던 옆동 아저씨가 열어줘서 들어올 수 있었지만, 엘리베이터 앞에 서는 순간 뭔가 크게 잘못됐다는 걸 깨달았다. 엘리베이터 버튼을 누르고 타 기다려봤지만 문은 닫히지 않았다. </p>
+        </div>
+
+        <div class="image-box">[무서운 계단 앞의 주인공]</div>
+
+        <div class="text-box">
+            <p>엘리베이터 앞에서 10분 넘게 기다렸지만, 아무도 오지 않았다.</p>
+
+            <p>밖은 더웠고, 9층까지 계단으로 올라갈 엄두는 나지 않았다. 하지만 배는 고파 마냥 기다릴 수만은 없어 게단으로 올라가기로 결심했다.</p>
+
+            <p>계단을 오르는 쪽은 어둡고 어디선가 바람이 불면서 소리가 크게 울려서 괜히 더 무서웠다.</p>
+        </div>
+
+        <div class="image-box">[열쇠구멍 안을 들여다보는 주인공]</div>
+
+        <div class="text-box">
+            <p>그렇게 하나하나 올라 겨우 집 앞에 도착했는데, 또 다른 문제가 있었다. 러시아는 도어락이 아니라 열쇠를 사용한다. 열쇠가 없으면 들어갈 방법이 없다. 혹시나 하는 마음에 벨을 눌러 가정부 아주머니를 기다려봤지만, 그날은 휴가였던 것 같다.</p>
+        </div>
+
+        <div class="image-box">[전화]</div>
+
+        <div class="text-box">
+            <p>지친 나는 결국 올라오는 화를 참고 엄마에게 전화를 걸었다. 어머니는 내 얘기를 들으시더니 “잠시만~" 하고 전화를 끊으셨다.</p>
+
+            <p>5분 뒤에 다시 전화가 왔다.</p>
+
+        </div>
+
+        <div class="image-box">[계단에 익숙해져 씩씩하게 오르는 주인공]</div>
+
+
+        <div class="text-box">
+            <p>마침 그날 같은 반 친구가 생일파티를 하고 있었다. 집이 가까우니까 거기로 가 있으라는 거였다.</p>
+
+            <p>나는 다시 눈물을 참으며 계단을 내려갔다. 그리고 그 친구 집까지 걸어갔다. 물론 그 집에도 엘리베이터가 있다. 체념한 나는 바로 계단으로 가 한 칸, 한 칸 다시 올라갔다. 친구 집은 12층이었다...</p>
+
+        </div>
+
+        <div class="image-box">[현관에서 안도하며 우는 아이]</div>
+
+        <div class="text-box">
+            <p>아무튼 그렇게 올라가서 친구 어머니가 나를 따뜻하게 맞아주셨다.</p>
+
+            <p>긴장이 풀린 탓인지 그제야 서러움이 터져 나왔다. 그렇게 하루 종일 그 친구 집에서 시간을 보내다가 저녁 10시가 넘어서야 오빠가 귀찮다는 표정을 하며 나를 데리러 왔다.</p>
+
+            <p>내가 삐친 게 눈치 보였는 지 오빠는 집으로 돌아가는 내내 말을 걸어주었지만, 내 화는 일주일이 지나서야 겨우 가라앉았다.</p>
+
+        </div>
+
+        <div class="image-box">[오빠와 투닥거리며 걸어가는 주인공의 뒷모습]</div>
+
+
+        <div class="end-section">
+            
+            
+            <p class="end-text">THE END</p>
+            
+            <div class="dots">. . .</div> 
+        </div>
+
+        </div>
+    </body>
 </html>
-
-<html>
-		<title>제목</title>
-		<style>
-			body{background: hotpink}
-			h1{font-size:3rem;color:white;}
-			h1:hover{color:black; transition: all 1s}
-		</style>
-	</head>
-	<body>
-		<h1>제목</h1> 
-		<p>본문1</p>
-		<p>본문2</p> 
-	</body>
-</html> 
