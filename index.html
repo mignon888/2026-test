@@ -3,264 +3,302 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>2013</title>
+    <title>2013 - 집에 가는 길</title>
     <style>
-        /*폰트*/
+        /* --- 기본 초기화 및 변수 --- */
+        body, h1, h2, h3, p { margin: 0; padding: 0; }
+        :root { 
+            --main-color: #dd5c5c; 
+            --bg-pink: #f8c8c8;
+            /* 본문 텍스트 표준 규격 */
+            --body-font-size: 1.25rem;
+            --body-line-height: 2.4;
+        }
+
+        /* --- 폰트 설정 --- */
         @font-face {
             font-family: 'TillVictoryComes';
             src: url('https://cdn.jsdelivr.net/gh/tillvictorycomes/TillVictoryComes-font/tillvictorycomes-Regular.woff2') format('woff2');
-            font-weight: normal;
-            font-style: normal;
-            font-display: swap;
         }
         @font-face {
-            font-family: 'Pretendard-Thin';
-            src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/pretendard@v1.3.8/public/static/Pretendard-Thin.woff2') format('woff2');
-            font-weight: 100;
-            font-style: normal;
-            font-display: swap;
-        }
-        @font-face {
-            font-family: 'SchoolSafetyPictureDiary';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimGeurimilgiTTF-R.woff2') format('woff2');
-            font-weight: normal;
-            font-display: swap;
+            font-family: 'A2z500';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2601-6@1.0/에이투지체-5Medium.woff2') format('woff2');
         }
 
-        /*전체 배경*/
         body {
-            margin: 0;
-            padding: 0;
-            background: #white; 
-            background-attachment: fixed;
-            color: #666;
-            font-family: 'Pretendard', sans-serif;
+            background: white;
+            color: #2c2c2c;
+            font-family: 'A2z500', sans-serif;
             display: flex;
             flex-direction: column;
-            align-items: center; 
-            font-weight: 100;
-        }
-        .inner-panel {
-            width: 100%;
-            max-width: 700px; /*가로폭*/
-            background-color: #ffffff; /*내부*/
-            padding: 0;
-            box-sizing: border-box;
-
-            border-left: 1px solid #333;
-            border-right: 1px solid #333;
-
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-        }
-        /*커버*/
-        .cover-section {
-            width: 100%;      
-            text-align: center;
-            padding: 100px 0 60px 0; /*상하 여백*/
-            border-bottom: 1px solid #333; /*가로선*/
-            margin-bottom: 9px;
-            box-sizing: border-box; 
-            display: block;         
-        }
-
-        h1 {
-            font-family: 'TillVictoryComes', sans-serif;
-            font-size: 5rem;
-            margin: 0;
-            color: #000;
-        }
-
-        .author {
-            font-size: 1.1rem;
-            margin-top: 20px;
-            margin-bottom: 0; 
-            color: #2c2c2c;
-            display: block;         
-        }
-        .info-bar {
-            width: 100%;
-            display: flex; /*가로 배치*/
-            justify-content: space-between; /*양끝 배치*/
-            align-items: center; /*세로 중앙*/
-    
-            padding: 10px 40px; /*중앙 정렬*/
-            border-bottom: 1px solid #333;
-            box-sizing: border-box;
-    
-            font-size: 1.1rem;
-            color: #2c2c2c;
-            line-height: 1; /*행간 제거 */
-        }
-        .info-bar p, .info-bar span {
-            margin: 0;
-            padding: 0;
-            line-height: 1;
-        }
-        /*본문*/
-        .main-content {
-            width: 100%;
-            margin: 0 auto;
-            padding: 35px 40px 0 40px;      
-            box-sizing: border-box;
-        }
-
-        /*본문 스타일*/
-        .text-box {
-            text-align: justify; /*양끝 정렬*/
-            line-height: 2.0;   /*행간*/
-            word-break: keep-all; /*переносить по словам*/
-            font-weight: 100;
-            color: #2c2c2c;
-            margin-bottom: 35px;
-
-        }
-
-        .text-box p {
-            font-size: 1.2rem; 
-            margin-bottom: 30px; /*문단 사이 간격*/
-        }
-
-        /*이미지*/
-        .image-box {
-            width: 100%;
-            max-width: 500px; /*이미지 사이즈<글 사이즈*/
-            height: 350px;
-            background-color: #eee; /*이미지 임시 배경*/
-            margin: 40px auto; /*상하여백&중앙정렬*/
-            display: flex;
             align-items: center;
-            justify-content: center;
-            color: #999;
-            font-style: italic;
-        }
-        .end-section {
+            overflow-x: hidden; /* 가로 스크롤 및 여백 방지 */
             width: 100%;
-            max-width: 600px; /*본문 넓이랑 같게*/
-            margin: 80px auto 150px auto; /*위아래 여백*/
-            text-align: center;
-        }
-        .end-text {
-            font-family: 'TillVictoryComes', sans-serif;
-            font-size: 5rem;   
-            color: #000;
-             margin: 0;
-            letter-spacing: 0.5rem; /*자간 넓게*/
-            text-transform: uppercase;
-        }
-        .dots {
-            font-size: 4rem; /*... 후에 투닥거리는 남매 얼굴 아이콘 추가하기*/
-            color: #999;
-        margin-top: 5px;
-        }
-        .point {
-            font-family: 'SchoolSafetyPictureDiary';
-            color: #2c2c2c;
         }
 
+        /* --- 본문 스타일 --- */
+        p { 
+            font-size: var(--body-font-size); 
+            line-height: var(--body-line-height); 
+            word-break: keep-all;
+        }
+
+        .section-spacer { width: 100%; height: 60vh; background: white; }
+        .point { color: var(--main-color); font-weight: bold; }
+
+        /*intro*/
+        .intro-bg {
+            position: relative;
+            height: 100vh;
+            width: 100vw;
+            background: url('./1.jpg') no-repeat center center / cover;
+        }
+        .intro-bg::after {
+            content: "";
+            position: absolute;
+            bottom: 0; left: 0; width: 100%; height: 50%;
+            background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+        }
+
+        .inner-panel { width: 100%; max-width: 900px; background: white; }
+        .cover-section { text-align: center; padding: 100px 0 60px; border-bottom: 1px solid #eee; }
+        h1 { font-family: 'TillVictoryComes'; font-size: 6rem; color: var(--main-color); }
+        .author { margin-top: 20px; font-weight: bold; font-size: 1.1rem; }
+        .info-bar { display: flex; justify-content: space-between; padding: 25px 40px; border-bottom: 1px solid #eee; margin-bottom: 120px; color: #666; }
+        .main-content { padding: 0 40px; text-align: center; margin-bottom: 120px; }
+
+        /*02*/
+        .elevator-img {
+            width: 100vw; height: 85vh;
+            background: url('./2.jpg') no-repeat center center / cover;
+            position: relative;
+            display: flex; align-items: center; justify-content: flex-end;
+            padding-right: 8%; box-sizing: border-box;
+        }
+        .image-text-right { text-align: right; max-width: 600px; z-index: 5; text-shadow: 0 0 20px white; }
+        .image-text-right h2 { font-size: 2.5rem; color: var(--main-color); margin-bottom: 20px; }
+
+        /*03*/
+        .story-banner {
+            width: 100vw;
+            background-color: var(--main-color); min-height: 100vh;
+            display: flex; flex-direction: column; align-items: center; padding: 150px 0 0 0;
+            box-sizing: border-box; position: relative;
+        }
+        .top-text { width: 90%; max-width: 900px; text-align: center; margin-bottom: 80px; color: white; font-weight: bold; }
+        .top-text p { font-size: 2.0rem; line-height: 1.4; } 
+        
+        .image-box { width: 85%; max-width: 1000px; height: 50vh; background: url('./3.jpg') no-repeat center center / cover; border: 10px solid white; box-shadow: 0 20px 40px rgba(0,0,0,0.2); border-radius: 5px; margin-bottom: 80px; }
+        .bottom-text { width: 90%; max-width: 850px; text-align: center; margin-bottom: 100px; color: white; }
+        
+        .gradient-overlay {
+            width: 100%; padding: 400px 0 200px;
+            background: linear-gradient(to bottom, rgba(221, 92, 92, 0) 0%, rgba(0, 0, 0, 0.5) 30%, rgba(0, 0, 0, 0.9) 70%, #000 100%);
+            display: flex; flex-direction: column; align-items: center;
+        }
+        .faded-text { color: white; opacity: 0.8; margin-bottom: 200px; text-align: center; }
+        .final-text { font-size: 2rem; font-weight: bold; color: var(--main-color); text-align: center; max-width: 900px; line-height: 1.5; }
+
+        /*04*/
+        .dark-stairs-section {
+            width: 100vw;
+            background-color: #000; min-height: 120vh;
+            display: flex; justify-content: center; align-items: flex-start;
+            padding-top: 200px; box-sizing: border-box;
+        }
+        .text-wrapper { width: 90%; max-width: 800px; text-align: center; }
+        .dark-stairs-section p { color: #fff; text-shadow: 0 0 10px rgba(255,255,255,0.3); }
+
+        /*05*/
+        .white-transition {
+            width: 100vw; height: 50vh;
+            background: linear-gradient(to bottom, #000 0%, white 100%);
+        }
+
+        /*05*/
+        .key-img {
+            width: 100vw; height: 90vh;
+            background: url('./4.jpg') no-repeat center center / cover;
+            position: relative; display: flex; align-items: center; justify-content: flex-start;
+            padding-left: 10%; box-sizing: border-box;
+        }
+        .key-text-left { width: 90%; max-width: 900px; text-shadow: 0 0 15px white; }
+        .key-text-left h2 { font-size: 2.5rem; color: var(--main-color); margin-bottom: 35px; font-weight: bold; }
+
+        /*07*/
+        .phone-section { width: 100vw; background-color: white; display: flex; flex-direction: column; align-items: center; }
+        .phone-image { width: 100%; height: 80vh; background: url('./5.jpg') no-repeat center center / cover; position: relative; }
+        .phone-image::after { content: ""; position: absolute; bottom: 0; left: 0; width: 100%; height: 200px; background: linear-gradient(to top, white, transparent); }
+        .phone-text-area { width: 100%; padding: 150px 20px; background-color: white; text-align: center; }
+        .phone-text-area p { font-weight: bold; max-width: 900px; margin: 0 auto; }
+
+        /*06*/
+        .stairs-image {
+            width: 100vw; height: 95vh;
+            background: url('./6.jpg') no-repeat center center / cover;
+            position: relative;
+            display: flex; 
+            justify-content: flex-end; 
+            align-items: flex-start; 
+            padding: 40px 8% 0 0; 
+            box-sizing: border-box;
+        }
+        .stairs-text-right { text-align: right; max-width: 550px; z-index: 10; text-shadow: 0 0 25px white; }
+        .stairs-text-right h2 { color: var(--main-color); font-size: 2.5rem; margin-bottom: 25px; font-weight: bold; }
+
+        /*07*/
+        .end-image {
+            width: 100vw; height: 95vh;
+            background: url('./7.jpg') no-repeat center center / cover;
+            position: relative;
+            display: flex; 
+            align-items: flex-start; 
+            justify-content: flex-start;
+            padding: 60px 0 0 8%; 
+            box-sizing: border-box;
+        }
+        .end-image::after {
+            content: "";
+            position: absolute;
+            bottom: 0; left: 0; width: 100%; height: 35vh;
+            background: linear-gradient(to top, white 20%, transparent 100%);
+            z-index: 5;
+        }
+        .end-text-left { 
+            text-align: left; 
+            max-width: 750px; 
+            z-index: 10; 
+            text-shadow: 0 0 25px white; 
+            font-weight: bold; 
+        }
+
+        /*08*/
+        .new-scene-image {
+            width: 100vw; height: 100vh;
+            background: url('./8.jpg') no-repeat center center / cover;
+            position: relative;
+            display: flex; 
+            align-items: flex-start; 
+            justify-content: center;
+            padding-top: 50px; 
+            box-sizing: border-box;
+        }
+        .new-scene-text {
+            text-align: center;
+            max-width: 850px;
+            z-index: 10;
+            text-shadow: 0 0 30px white, 0 0 10px white;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
-    <div class="outline">
-        <div class="inner-panel">
-    <div class="cover-section">
-        <h1>집으로 가는 길</h1>
-        <p class="author">글/그림 최진주</p>
+
+    <section class="intro-bg"></section>
+
+    <div class="inner-panel">
+        <div class="cover-section">
+            <h1>집에 가는 길</h1>
+            <p class="author">글/그림 최진주</p>
+        </div>
+        <div class="info-bar">
+            <span>2013년 XX월 XX일</span>
+            <span>날씨: 맑음</span>
+        </div>
+        <div class="main-content">
+            <p>어릴 적 내가 가장 싫어했던 건 <span class="point">엘리베이터</span> 였다.<br>
+            러시아의 엘리베이터에는 독특한 시스템이 있다. 아이들의 안전 사고를 위해<br>
+            '최소 무게 제한'을 둔 것이다.몸무게가 가벼운 아이가 버튼을 누르면 문이 닫히지 않았고,<br>
+            당연히 위아래로 움직이지도 않았다.</p>
+        </div>
     </div>
-    <div class="info-bar">
-        <span>2013년 05월 11일</span>
-        <span>날씨: 맑음</span>
+
+    <section class="elevator-img">
+        <div class="image-text-right">
+            <h2>삐-! 삐-! 삐-!</h2>
+            <p>내가 먼저 엘리베이터에 타 경고음이 울리면 그제서야 오빠가 달려온다.</p>
+            <p>잠이 많은 오빠를 기다리는 건 지루한 일이다.</p>
+        </div>
+    </section>
+
+    <div class="section-spacer"></div>
+
+    <div class="story-banner">
+        <div class="top-text"><p>그날도 평소처럼 오빠와 함께 스쿨버스에 타려던 참이었다.</p></div>
+        <div class="image-box"></div>
+        <div class="bottom-text">
+            <p>하지만 오빠는 나만 버스에 태우고 본인은 친구들과 놀러 가버렸다.<br>
+            아무 생각없이 오빠만 따라다녔던 나는, 멀어지며 손을 흔드는 오빠에게 같이 손을 흔들어주었다.</p>
+        </div>
+        <div class="gradient-overlay">
+            <p class="faded-text">그때의 나는 알지 못했다. 그게 얼마나 큰 실수였는지...</p>
+            <p class="final-text">
+                집에 도착해서야 이상하다는 걸 느꼈다.<br>
+                버튼을 누르고 기다려봤지만 문은 닫히지 않았다.<br>
+            </p>
+        </div>
     </div>
-    <div class="main-content">
 
-        <div class="text-box">
-            <p>어릴 적 내가 가장 싫어했던 건 <strong class="point">엘리베이터</strong> 였다.</p>
-
-            <p>러시아의 엘리베이터에는 독특한 시스템이 있다. 아이들의 안전 사고나 미아 방지를 위해 '최소 무게 제한'을 둔 것이다. 몸무게가 가벼운 아이가 버튼을 누르면 문이 닫히지 않았고, 당연히 위아래로 움직이지도 않았다.</p>
-
-            <p>그래서 밖을 나갈 때면 엄마는 항상 오빠를 내 곁에 붙여주셨다. 엘리베이터를 움직이려면 오빠가 꼭 필요했기 때문이다. 지금 생각해보면, 한창 놀고 싶었을 어린 오빠에게도 나를 챙겨야 하는 상황이 꽤 귀찮은 일이었을 것 같다.</p>
+    <div class="dark-stairs-section">
+        <div class="text-wrapper">
+            <p>그렇게 엘리베이터 앞에서 10분 넘게 기다렸지만, 아무도 오지 않았다.<br><br>
+            밖은 더웠고, 9층까지 계단으로 올라갈 엄두는 나지 않았다.<br><br>
+            하지만 배는 고파 마냥 기다릴 수만은 없어 계단으로 올라가기로 결심했다.</p>
         </div>
+    </div>
 
-        <div class="image-box">[엘리베이터 안 주인공과 오빠]</div>
+    <div class="white-transition"></div>
 
-        <div class="text-box">
-            <p>어린 나는 밖에 나오면 신이 나서 제멋대로 걸어가다 앞을 못 보고 넘어지는 경우가 많았다. 그래서 그런지 오빠는 매번 내 가방 고리에 손가락이나 우산 끝을 걸고 나를 데리고 다녔다.</p>
+    <section class="key-img">
+        <div class="key-text-left">
+            <h2>1차 고비를 넘긴 나는<br>두번째 관문에 놓였다.</h2>
+            <p>러시아는 도어락이 아니라 열쇠를 사용한다. 열쇠가 없으면 들어갈 방법이 없다.</p>
+            <p>혹시나 하는 마음에 벨을 눌러 가정부 아주머니를 기다려봤지만, 그날은 휴가였던 것 같다.</p>
         </div>
+    </section>
 
-        <div class="image-box">[버스]</div>
+    <div class="section-spacer"></div>
 
-        <div class="text-box">
-            <p>그날도 평소처럼 학교가 끝나고 오빠와 함께 스쿨버스에 타려던 참이었다.</p>
-
-            <p>오빠는 나만 버스에 태우고 본인은 친구들과 놀러 가버렸다. 아무 생각없이 오빠만 따라다녔던 나는, 멀어지며 손을 흔드는 오빠에게 같이 손을 흔들어주었다.</p>
-
-            <p>버스 안에서 친구들과 신나게 수다를 떨며 집으로 향했다. 그때의 나는 알지 못했다. 그게 얼마나 큰 실수였는지...</p>
+    <div class="phone-section">
+        <div class="phone-image"></div>
+        <div class="phone-text-area">
+            <p>지친 나는 결국 엄마에게 전화를 걸었다. <br>
+            엄마는 내 얘기를 들으시더니 “잠시만~" 하고 전화를 끊으셨다.<br>
+            5분 뒤에 다시 전화가 오더니, 반 친구가 생일파티를 하고 있으니,<br>
+            거기로 가 있으라는 말이었다.</p>
         </div>
+    </div>
 
-        <div class="image-box">[엘리베이터 안 주인공]</div>
+    <div class="section-spacer"></div>
 
-        <div class="text-box">
-            <p>집에 도착해서야 이상하다는 걸 느꼈다. 현관문은 지나가던 옆동 아저씨가 열어줘서 들어올 수 있었지만, 엘리베이터 앞에 서는 순간 뭔가 크게 잘못됐다는 걸 깨달았다. 엘리베이터 버튼을 누르고 타 기다려봤지만 문은 닫히지 않았다. </p>
+    <section class="stairs-image">
+        <div class="stairs-text-right">
+            <h2>나는 또 올라갔다...</h2>
+            <p>나는 1층으로 내려온 다음 그 친구 집까지 걸어갔다.<br>
+            물론 그 집에도 엘리베이터가 있었다. 체념한 나는 바로<br>
+            계단으로 가 한 칸, 한 칸 다시 올라갔다. 친구 집은 12층이었다...</p>
         </div>
+    </section>
 
-        <div class="image-box">[무서운 계단 앞의 주인공]</div>
+    <div class="section-spacer" style="height: 30vh;"></div>
 
-        <div class="text-box">
-            <p>엘리베이터 앞에서 10분 넘게 기다렸지만, 아무도 오지 않았다.</p>
-
-            <p>밖은 더웠고, 9층까지 계단으로 올라갈 엄두는 나지 않았다. 하지만 배는 고파 마냥 기다릴 수만은 없어 게단으로 올라가기로 결심했다.</p>
-
-            <p>계단을 오르는 쪽은 어둡고 어디선가 바람이 불면서 소리가 크게 울려서 괜히 더 무서웠다.</p>
+    <section class="end-image">
+        <div class="end-text-left">
+            <p>힘겹게 올라가니 친구 어머니가 나를 따뜻하게 맞아주셨다.<br>
+            긴장이 풀린 탓인지 그제야 서러움이 터져 나왔다.<br>
+            그렇게 하루 종일 그 친구 집에서 시간을 보내다가 <br> 
+            저녁 10시가 넘어서야 오빠가 귀찮다는 표정을 하며 나를 데리러 왔다.</p>
         </div>
+    </section>
 
-        <div class="image-box">[열쇠구멍 안을 들여다보는 주인공]</div>
+    <div class="section-spacer" style="height: 40vh;"></div>
 
-        <div class="text-box">
-            <p>그렇게 하나하나 올라 겨우 집 앞에 도착했는데, 또 다른 문제가 있었다. 러시아는 도어락이 아니라 열쇠를 사용한다. 열쇠가 없으면 들어갈 방법이 없다. 혹시나 하는 마음에 벨을 눌러 가정부 아주머니를 기다려봤지만, 그날은 휴가였던 것 같다.</p>
+    <section class="new-scene-image">
+        <div class="new-scene-text">
+            <p>내가 삐친 게 눈치 보였는 지 오빠는 집으로 돌아가는 내내 말을 걸어주었지만,<br> 
+            내 화는 일주일이 지나서야 겨우 가라앉았다.<br>
+            그날 나는 다음에 꼭 열쇠를 확인하고 다니기로 다짐했다</p>
         </div>
-
-        <div class="image-box">[전화]</div>
-
-        <div class="text-box">
-            <p>지친 나는 결국 올라오는 화를 참고 엄마에게 전화를 걸었다. 어머니는 내 얘기를 들으시더니 “잠시만~" 하고 전화를 끊으셨다.</p>
-
-            <p>5분 뒤에 다시 전화가 왔다.</p>
-
-        </div>
-
-        <div class="image-box">[계단에 익숙해져 씩씩하게 오르는 주인공]</div>
-
-
-        <div class="text-box">
-            <p>마침 그날 같은 반 친구가 생일파티를 하고 있었다. 집이 가까우니까 거기로 가 있으라는 거였다.</p>
-
-            <p>나는 다시 눈물을 참으며 계단을 내려갔다. 그리고 그 친구 집까지 걸어갔다. 물론 그 집에도 엘리베이터가 있다. 체념한 나는 바로 계단으로 가 한 칸, 한 칸 다시 올라갔다. 친구 집은 12층이었다...</p>
-
-        </div>
-
-        <div class="image-box">[현관에서 안도하며 우는 아이]</div>
-
-        <div class="text-box">
-            <p>아무튼 그렇게 올라가서 친구 어머니가 나를 따뜻하게 맞아주셨다.</p>
-
-            <p>긴장이 풀린 탓인지 그제야 서러움이 터져 나왔다. 그렇게 하루 종일 그 친구 집에서 시간을 보내다가 저녁 10시가 넘어서야 오빠가 귀찮다는 표정을 하며 나를 데리러 왔다.</p>
-
-            <p>내가 삐친 게 눈치 보였는 지 오빠는 집으로 돌아가는 내내 말을 걸어주었지만, 내 화는 일주일이 지나서야 겨우 가라앉았다.</p>
-
-        </div>
-
-        <div class="image-box">[오빠와 투닥거리며 걸어가는 주인공의 뒷모습]</div>
-
-
-        <div class="end-section">
-            
-            
-            <p class="end-text">THE END</p>
-            
-            <div class="dots">. . .</div> 
-        </div>
-
-        </div>
-    </body>
+    </section>
+</body>
 </html>
